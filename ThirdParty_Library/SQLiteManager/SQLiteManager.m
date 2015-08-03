@@ -156,7 +156,7 @@
                sqlite3_bind_double(statement, count, [param timeIntervalSince1970]);
             }
             if ([param isKindOfClass:[NSData class]] ) {
-                sqlite3_bind_blob(statement, count, [param bytes], [param length], SQLITE_STATIC);
+                sqlite3_bind_blob(statement, count, [param bytes], (int)[param length], SQLITE_STATIC);
             }
         }
 		

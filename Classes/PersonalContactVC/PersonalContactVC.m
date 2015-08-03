@@ -8,7 +8,7 @@
 
 #import "PersonalContactVC.h"
 #import "ContactDetailVC.h"
-#import "AppDelegate.h"
+
 
 @interface PersonalContactVC () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -35,8 +35,8 @@
     if (mutArrPersonalContact)
         [mutArrPersonalContact removeAllObjects];
     
-    AppDelegate *objAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    mutArrPersonalContact = [[objAppDelegate.objSQLiteManager getRowsForQuery:[NSString stringWithFormat:@"select * from allContact where ispersonal = 1"]] mutableCopy];
+    
+    mutArrPersonalContact = [[objSQLiteManager getRowsForQuery:[NSString stringWithFormat:@"select * from allContact where ispersonal = 1"]] mutableCopy];
     
     [tblViewContacts reloadData];
 }

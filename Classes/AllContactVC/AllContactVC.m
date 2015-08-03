@@ -8,7 +8,7 @@
 
 #import "AllContactVC.h"
 #import "ContactDetailVC.h"
-#import "AppDelegate.h"
+
 
 @interface AllContactVC () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -36,8 +36,8 @@
     if (mutArrAllContact)
         [mutArrAllContact removeAllObjects];
     
-    AppDelegate *objAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    mutArrAllContact = [[objAppDelegate.objSQLiteManager getRowsForQuery:@"select * from allContact"] mutableCopy];
+    
+    mutArrAllContact = [[objSQLiteManager getRowsForQuery:@"select * from allContact"] mutableCopy];
     
     [tblViewContacts reloadData];
 }

@@ -8,22 +8,21 @@
 
 #import "AppDelegate.h"
 
-
-
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-@synthesize objSQLiteManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     [self copyDatabaseToDocumentDirectoryWithName:@"contact.db"];
     
-    if (!self.objSQLiteManager) {
-        self.objSQLiteManager = [[SQLiteManager alloc]initWithDatabaseNamed:@"contact.db"];
+    objAppDelegate = [UIApplication sharedApplication].delegate;
+    
+    if (!objSQLiteManager) {
+        objSQLiteManager = [[SQLiteManager alloc]initWithDatabaseNamed:@"contact.db"];
     }
     
     return YES;

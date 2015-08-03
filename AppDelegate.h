@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SQLiteManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) SQLiteManager *objSQLiteManager;
 
 @end
 

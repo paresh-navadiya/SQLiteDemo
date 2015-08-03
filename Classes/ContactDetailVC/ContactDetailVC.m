@@ -7,7 +7,7 @@
 //
 
 #import "ContactDetailVC.h"
-#import "AppDelegate.h"
+
 
 @interface ContactDetailVC () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -114,7 +114,7 @@
 {
     UISwitch *curSwitch = (UISwitch *)sender;
     
-    AppDelegate *objAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
 
     NSInteger contactid = [[self.dictContact objectForKey:@"contactid"] integerValue];
     NSString *strUpdateQuery = @"";
@@ -123,7 +123,7 @@
     else
         strUpdateQuery = [NSString stringWithFormat:@"update allContact set ispersonal = 0 where contactid = %ld",(long)contactid];
     
-    NSError *error = [objAppDelegate.objSQLiteManager doQuery:strUpdateQuery];
+    NSError *error = [objSQLiteManager doQuery:strUpdateQuery];
     if (error)
         NSLog(@"%@",[error  description]);
     else
@@ -146,7 +146,7 @@
 {
     UISwitch *curSwitch = (UISwitch *)sender;
     
-    AppDelegate *objAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     
     NSInteger contactid = [[self.dictContact objectForKey:@"contactid"] integerValue];
     NSString *strUpdateQuery = @"";
@@ -155,7 +155,7 @@
     else
         strUpdateQuery = [NSString stringWithFormat:@"update allContact set isprofessional = 0 where contactid = %ld",(long)contactid];
     
-    NSError *error = [objAppDelegate.objSQLiteManager doQuery:strUpdateQuery];
+    NSError *error = [objSQLiteManager doQuery:strUpdateQuery];
     if (error)
         NSLog(@"%@",[error  description]);
     else

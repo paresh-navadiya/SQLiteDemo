@@ -1,0 +1,22 @@
+//
+//  Practical.pch
+//  Practical
+//
+//  Created by ECWIT on 03/08/15.
+//  Copyright (c) 2015 ECWIT. All rights reserved.
+//
+
+#ifndef Practical_Practical_pch
+#define Practical_Practical_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import "AppDelegate.h"
+AppDelegate *objAppDelegate;
+
+#import "SQLiteManager.h"
+SQLiteManager *objSQLiteManager;
+
+#endif

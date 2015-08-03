@@ -8,7 +8,7 @@
 
 #import "ProfessionalContatctVC.h"
 #import "ContactDetailVC.h"
-#import "AppDelegate.h"
+
 
 @interface ProfessionalContatctVC () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -34,8 +34,8 @@
     if (mutArrProfessionalContact)
         [mutArrProfessionalContact removeAllObjects];
     
-    AppDelegate *objAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    mutArrProfessionalContact = [[objAppDelegate.objSQLiteManager getRowsForQuery:[NSString stringWithFormat:@"select * from allContact where isprofessional = 1"]] mutableCopy];
+    
+    mutArrProfessionalContact = [[objSQLiteManager getRowsForQuery:[NSString stringWithFormat:@"select * from allContact where isprofessional = 1"]] mutableCopy];
     [tblViewContacts reloadData];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "HomeVC.h"
-#import "AppDelegate.h"
+
 #import <AddressBook/AddressBook.h>
 
 #import "AllContactVC.h"
@@ -96,9 +96,9 @@
 
 -(void)saveContact
 {
-    AppDelegate *objAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     // open the default address book.
-    ABAddressBookRef addressBook = ABAddressBookCreate( );
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     
     if (addressBook)
     {
@@ -143,7 +143,7 @@
             
             NSString *strQuery = [NSString stringWithFormat:@"insert into allContact (contactid,contactname,contactphone,contactemail) values(%@,'%@','%@','%@')",contactID,strName,strMobile,strEmail];
             
-            NSError *error = [objAppDelegate.objSQLiteManager doQuery:strQuery];
+            NSError *error = [objSQLiteManager doQuery:strQuery];
             if (error)
                 NSLog(@"error : %@",[error description]);
             
