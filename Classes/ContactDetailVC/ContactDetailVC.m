@@ -66,6 +66,30 @@
     return [mutArrContactDetail count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+    if ([mutArrContactDetail count] > 0)
+        return 60;
+    else
+        return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60)];
+    
+    UIButton *btnCall = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnCall.frame = CGRectMake((footerView.frame.size.width/2)-60, 20, 120.f, 40);
+    [btnCall addTarget:self action:@selector(btnCallAction:) forControlEvents:UIControlEventTouchUpInside];
+    btnCall.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
+    [btnCall.layer setCornerRadius:6.0f];
+    [btnCall setTitle:@"Call" forState:UIControlStateNormal];
+    [btnCall setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [footerView addSubview:btnCall];
+    
+    return footerView;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dictDetail = [mutArrContactDetail objectAtIndex:indexPath.row];
@@ -114,8 +138,6 @@
 {
     UISwitch *curSwitch = (UISwitch *)sender;
     
-    
-
     NSInteger contactid = [[self.dictContact objectForKey:@"contactid"] integerValue];
     NSString *strUpdateQuery = @"";
     if (curSwitch.isOn)
@@ -138,15 +160,11 @@
         
         [alertView show];
     }
-        
-    
 }
 
 -(IBAction)btnSwitchProfessionalAction:(id)sender
 {
     UISwitch *curSwitch = (UISwitch *)sender;
-    
-    
     
     NSInteger contactid = [[self.dictContact objectForKey:@"contactid"] integerValue];
     NSString *strUpdateQuery = @"";
@@ -171,6 +189,19 @@
         [alertView show];
     }
     
+}
+
+#pragma mark - Methods
+
+-(IBAction)btnCallAction:(id)sender
+{
+    NSString *strPhone = [self.dictContact objectForKey:@"contactphone"];
+    
+    if (strPhone.length>0)
+    {
+        NSString *strTELURL = [@"tel://" stringByAppendingString:strPhone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strTELURL]];
+    }
 }
 
 

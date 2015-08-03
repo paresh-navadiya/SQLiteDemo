@@ -100,6 +100,8 @@
     UILabel *lblContactNumber = (UILabel *)[cell viewWithTag:101];
     lblContactNumber.text = strContactNumber;
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 
